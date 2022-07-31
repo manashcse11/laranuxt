@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\experience;
+use App\Models\Experience;
 use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
@@ -14,17 +14,8 @@ class ExperienceController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $experiences = Experience::all();
+        return $this->render($experiences);
     }
 
     /**
