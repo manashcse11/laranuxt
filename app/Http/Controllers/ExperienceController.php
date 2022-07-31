@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreExperienceRequest;
 use App\Models\Experience;
 use Illuminate\Http\Request;
 
@@ -24,9 +25,10 @@ class ExperienceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreExperienceRequest $request)
     {
-        //
+        $experience = Experience::create($request->all());
+        return $this->render($experience);
     }
 
     /**
