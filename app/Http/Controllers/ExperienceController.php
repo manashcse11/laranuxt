@@ -34,45 +34,43 @@ class ExperienceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\experience  $experience
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function show(experience $experience)
+    public function show(Experience $experience)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\experience  $experience
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(experience $experience)
-    {
-        //
+        return $this->render($experience);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\experience  $experience
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, experience $experience)
+    public function update(StoreExperienceRequest $request, Experience $experience)
     {
-        //
+        $experience->job_title = $request->job_title;
+        $experience->company_name = $request->company_name;
+        $experience->company_web_url = $request->company_web_url;
+        $experience->city = $request->city;
+        $experience->country = $request->country;
+        $experience->start_date = $request->start_date;
+        $experience->end_date = $request->end_date;
+        $experience->responsibilities = $request->responsibilities;
+        $experience->save();
+        return $this->render($experience);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\experience  $experience
+     * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function destroy(experience $experience)
+    public function destroy($id)
     {
-        //
+        return Experience::destroy($id);
     }
 }
