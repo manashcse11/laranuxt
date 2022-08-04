@@ -21,7 +21,8 @@
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
-    "nuxt-tailvue": "^1.0.10"
+    "nuxt-tailvue": "^1.0.10",
+    "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
     "@jamesacarr/eslint-formatter-github-actions": "^0.1.0",

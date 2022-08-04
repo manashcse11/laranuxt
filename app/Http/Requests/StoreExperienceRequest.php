@@ -29,7 +29,7 @@ class StoreExperienceRequest extends FormRequest
             'city' => ['required', 'max:255'],
             'country' => ['required', 'max:255'],
             'start_date' => ['required', 'date'],
-            'end_date' => ['date', 'after:start_date'],
+            'end_date' => ['nullable', 'date', 'after:start_date'],
         ];
     }
 }
