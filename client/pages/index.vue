@@ -24,7 +24,7 @@
           <button @click="showEditExperienceModalMethod(index, experience)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
             Edit
           </button>
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+          <button @click="deleteExperience(index, experience)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
             Delete
           </button>
         </div>
@@ -76,6 +76,17 @@ export default Vue.extend({
       this.showEditExperienceModal = true
       this.index = index
       this.experience = experience
+    },
+    deleteExperience (index, experience) {
+      if (confirm('Do you really want to delete?')) {
+        this.$axios.delete('experiences/' + experience.id).then((response) => {
+          if (response.status === 200) {
+            this.experiences.splice(index)
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
     },
   },
 })
