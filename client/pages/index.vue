@@ -35,8 +35,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import AddExperienceModal from '../components/modals/AddExperienceModal'
-import EditExperienceModal from '../components/modals/EditExperienceModal'
+import AddExperienceModal from '../components/modals/AddExperienceModal.vue'
+import EditExperienceModal from '../components/modals/EditExperienceModal.vue'
 import { Experiences } from '@/types/api'
 export default Vue.extend({
   components: {
@@ -72,12 +72,12 @@ export default Vue.extend({
       this.count = count
       this.get(this.count)
     },
-    showEditExperienceModalMethod (index, experience) {
+    showEditExperienceModalMethod (index: NumberConstructor, experience: never[]) {
       this.showEditExperienceModal = true
       this.index = index
       this.experience = experience
     },
-    deleteExperience (index, experience) {
+    deleteExperience (index: number, experience: { id: string }) {
       if (confirm('Do you really want to delete?')) {
         this.$axios.delete('experiences/' + experience.id).then((response) => {
           if (response.status === 200) {
