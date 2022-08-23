@@ -17,6 +17,15 @@ class Experience extends Model
      */
     protected $fillable = ['job_title','company_name', 'company_web_url', 'city', 'country', 'start_date', 'end_date', 'responsibilities'];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
     public function setStartDateAttribute($value)
     {
         $this->attributes['start_date'] = is_null($value) ? null : Carbon::parse($value)->toDateString();
